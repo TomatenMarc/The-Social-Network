@@ -1,0 +1,7 @@
+include LICENSE
+include README.rst
+include core/*
+exclude the_social_network/*
+exclude setup.cfg
+exclude MANIFEST.in
+exclude manage.py
