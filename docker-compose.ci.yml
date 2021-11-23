@@ -1,0 +1,7 @@
+version: "3"
+services:
+  web:
+    build: ./the_social_network
+    image: ${REGISTRY}/feger/the-social-network/web:latest
+    volumes:
+      - ./the_social_network:/code
