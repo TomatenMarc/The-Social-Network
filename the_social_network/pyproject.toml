@@ -10,7 +10,7 @@ homepage = "https://gitlab.cs.uni-duesseldorf.de/feger/the-social-network"
 
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.9"
 Django = "^3.2.9"
 djangorestframework = "^3.12.4"
 Pillow = "^8.4.0"
