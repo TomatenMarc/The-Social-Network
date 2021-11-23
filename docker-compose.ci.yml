@@ -1,0 +1,7 @@
+version: "3"
+services:
+  web:
+    build: ./solar
+    image: ${REGISTRY}/cn-tsn/project/solar/web:latest
+    volumes:
+      - ./solar:/code
