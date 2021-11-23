@@ -6,7 +6,6 @@ services:
 stages:
   - build
   - test
-  - deploy
 
 before_script:
   - docker version
@@ -33,17 +32,4 @@ test:
   script:
     - echo "Testing ..."
     - docker-compose -f docker-compose.ci.yml pull
-    - docker-compose -f docker-compose.ci.yml run web sh -c "pipenv run python manage.py makemigrations && pipenv run python manage.py migrate && pipenv run python manage.py test core -v 2"
-
-deploy:
-  stage: deploy
-  needs:
-    - test
-  script:
-    - echo "Deploying ..."
-    - mw /the_social_network /not_needed
-    - mw /core /the_social_network
-    - pip install poetry
-    - poetry --version
-    - poetry config pypi-token.pypi $POETRY_HTTP_BASIC_PYPI_USERNAME $POETRY_HTTP_BASIC_PYPI_PASSWORD
-    - poetry publish
+    - docker-compose -f docker-compose.ci.yml run web sh -c "poetry run python manage.py makemigrations && poetry run python manage.py migrate && poetry run python manage.py test core -v 2"
