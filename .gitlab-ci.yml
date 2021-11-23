@@ -44,6 +44,7 @@ deploy:
     - cd ./the_social_network
     - mv ./the_social_network ./not_needed
     - mv ./core ./the_social_network
+    - apk add py-pip
     - pip install poetry
     - poetry --version
     - poetry config pypi-token.pypi $PYPI_TOKEN
