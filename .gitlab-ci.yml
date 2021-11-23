@@ -42,9 +42,9 @@ deploy:
   script:
     - echo "Deploying ..."
     - cd ./the_social_network
-    - mw ./the_social_network ./not_needed
-    - mw ./core ./the_social_network
+    - mv ./the_social_network ./not_needed
+    - mv ./core ./the_social_network
     - pip install poetry
     - poetry --version
-    - poetry config pypi-token.pypi __token__ $PYPI_TOKEN
+    - poetry config pypi-token.pypi $PYPI_TOKEN
     - poetry publish
