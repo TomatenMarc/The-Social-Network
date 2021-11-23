@@ -45,5 +45,5 @@ deploy:
     - mw /core /the_social_network
     - pip install poetry
     - poetry --version
-    - poetry config pypi-token.pypi $POETRY_PYPI_TOKEN_PYPI
+    - poetry config pypi-token.pypi $POETRY_HTTP_BASIC_PYPI_USERNAME $POETRY_HTTP_BASIC_PYPI_PASSWORD
     - poetry publish
