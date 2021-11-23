@@ -1,7 +1,7 @@
 version: "3"
 services:
   web:
-    build: ./solar
-    image: ${REGISTRY}/cn-tsn/project/solar/web:latest
+    build: ./the-social-network
+    image: ${REGISTRY}/feger/the-social-network/web:latest
     volumes:
-      - ./solar:/code
+      - ./the-social-network:/code
