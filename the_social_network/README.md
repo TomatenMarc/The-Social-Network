@@ -1,6 +1,4 @@
-============
-The Social Network
-============
+# The Social Network
 
 The package "The Social Network" is a django base backend core element for any possible social network you can think of.
 

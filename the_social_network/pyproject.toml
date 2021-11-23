@@ -4,7 +4,9 @@ version = "0.0.1"
 description = "Basic social network core."
 authors = ["Marc Feger <marc.feger@hhu.de>"]
 license = "BSD-4"
-exclude = ["core"]
+readme = "README.md"
+exclude = ["not_needed"]
+homepage = "https://gitlab.cs.uni-duesseldorf.de/feger/the-social-network"
 
 
 [tool.poetry.dependencies]
