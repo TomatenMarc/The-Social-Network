@@ -48,4 +48,5 @@ deploy:
     - pip install poetry
     - poetry --version
     - poetry config pypi-token.pypi $PYPI_TOKEN
+    - poetry build
     - poetry publish
