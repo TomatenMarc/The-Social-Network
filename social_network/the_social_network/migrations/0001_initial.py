@@ -26,8 +26,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created', models.DateTimeField(auto_now_add=True, db_index=True)),
-                ('from_account', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='from_account', to='core.account')),
-                ('to_account', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='to_account', to='core.account')),
+                ('from_account', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='from_account', to='the_social_network.account')),
+                ('to_account', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='to_account', to='the_social_network.account')),
             ],
             options={
                 'ordering': ('-created',),
@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='account',
             name='related_to',
-            field=models.ManyToManyField(blank=True, default=None, related_name='related_by', through='core.Relationship', to='core.Account'),
+            field=models.ManyToManyField(blank=True, default=None, related_name='related_by', through='the_social_network.Relationship', to='the_social_network.Account'),
         ),
         migrations.CreateModel(
             name='Statement',
@@ -44,7 +44,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('content', models.CharField(max_length=120)),
                 ('created', models.DateTimeField(auto_now_add=True, db_index=True)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.account')),
+                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='the_social_network.account')),
             ],
             options={
                 'ordering': ('-created',),
@@ -63,8 +63,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created', models.DateTimeField(auto_now_add=True, db_index=True)),
-                ('hashtag', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='hashtag', to='core.hashtag')),
-                ('statement', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.statement')),
+                ('hashtag', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='hashtag', to='the_social_network.hashtag')),
+                ('statement', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='the_social_network.statement')),
             ],
             options={
                 'ordering': ('-created',),
@@ -73,15 +73,15 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='statement',
             name='tagged',
-            field=models.ManyToManyField(blank=True, default=None, related_name='tags', through='core.HashtagTagging', to='core.Hashtag'),
+            field=models.ManyToManyField(blank=True, default=None, related_name='tags', through='the_social_network.HashtagTagging', to='the_social_network.Hashtag'),
         ),
         migrations.CreateModel(
             name='AccountTagging',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created', models.DateTimeField(auto_now_add=True, db_index=True)),
-                ('account', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='account', to='core.account')),
-                ('statement', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.statement')),
+                ('account', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='account', to='the_social_network.account')),
+                ('statement', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='the_social_network.statement')),
             ],
             options={
                 'ordering': ('-created',),
@@ -90,7 +90,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='statement',
             name='mentioned',
-            field=models.ManyToManyField(blank=True, default=None, related_name='mentions', through='core.AccountTagging', to='core.Account'),
+            field=models.ManyToManyField(blank=True, default=None, related_name='mentions', through='the_social_network.AccountTagging', to='the_social_network.Account'),
         ),
         migrations.CreateModel(
             name='Reaction',
@@ -98,8 +98,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created', models.DateTimeField(auto_now_add=True, db_index=True)),
                 ('vote', models.PositiveSmallIntegerField(choices=[(1, 'like'), (2, 'dislike')], default=1)),
-                ('child', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='child', to='core.statement')),
-                ('parent', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='parent', to='core.statement')),
+                ('child', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='child', to='the_social_network.statement')),
+                ('parent', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='parent', to='the_social_network.statement')),
             ],
             options={
                 'ordering': ('-created',),
@@ -108,6 +108,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='statement',
             name='reactions',
-            field=models.ManyToManyField(blank=True, default=None, related_name='reaction_of', through='core.Reaction', to='core.Statement'),
+            field=models.ManyToManyField(blank=True, default=None, related_name='reaction_of', through='the_social_network.Reaction', to='the_social_network.Statement'),
         ),
     ]
