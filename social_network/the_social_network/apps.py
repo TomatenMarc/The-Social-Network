@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class AuthenticationConfig(AppConfig):
-    name = 'core'
+    name = 'the_social_network'

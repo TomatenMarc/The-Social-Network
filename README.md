@@ -1,10 +1,10 @@
 # The Social Network
 
-`the_social_network/` is the backend of the most thinkable fronted for social networks, which was developed with [Django](https://www.djangoproject.com/) and [Django Rest Framework](https://www.django-rest-framework.org/)
+`social_network/` is the backend of the most thinkable fronted for social networks, which was developed with [Django](https://www.djangoproject.com/) and [Django Rest Framework](https://www.django-rest-framework.org/)
 
 This subproject is the basis for any possible type of social networks.
 
-The `core/` subfolder is the core of this project an is managed to working as a starting point for any further works on basic social networks.
+The `the_social_network/` subfolder is the core of this project an is managed to working as a starting point for any further works on basic social networks.
 
 Use the [Postman-Documentation](https://documenter.getpostman.com/view/13331140/TzRNFVaC) and run it locally for a detailed overview about the API.
 Make sure the database is seeded with corresponding data.

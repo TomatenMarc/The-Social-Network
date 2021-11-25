@@ -24,8 +24,8 @@ yarn-error.log*
 *.eslintcache
 */media/account/images/
 
-the_social_network/django_static
+social_network/django_static
 pypi/*/
 
-the_social_network/dist
-the_social_network/the_social_network.egg-info
+social_network/dist
+social_network/the_social_network.egg-info

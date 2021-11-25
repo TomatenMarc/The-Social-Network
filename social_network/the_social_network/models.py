@@ -14,7 +14,7 @@ class Statement(models.Model):
     """
     This model represents an statement of an specific account.
     """
-    author = models.ForeignKey('core.Account', on_delete=models.CASCADE)
+    author = models.ForeignKey('the_social_network.Account', on_delete=models.CASCADE)
     content = models.CharField(max_length=120, blank=False)
     created = models.DateTimeField(auto_now_add=True, db_index=True)
     # Add an hashtag between statements and hashtags  over the tagging model
@@ -24,7 +24,7 @@ class Statement(models.Model):
                                     symmetrical=False,
                                     related_name='tags',
                                     default=None)
-    mentioned = models.ManyToManyField('core.Account',
+    mentioned = models.ManyToManyField('the_social_network.Account',
                                        blank=True,
                                        through='AccountTagging',
                                        symmetrical=False,
@@ -62,7 +62,7 @@ class Statement(models.Model):
         used_mentions: List[str] = self.__extract_mentioning()
         # resolve mentions after saving the statement
         for used_mention in used_mentions:
-            account: 'core.Account' = apps.get_model("core", "Account").objects.filter(
+            account: 'the_social_network.Account' = apps.get_model("the_social_network", "Account").objects.filter(
                 user__username=used_mention).first()
             if account:
                 self.add_mentioning(account=account)
@@ -156,7 +156,7 @@ class Statement(models.Model):
         ).delete()
         return deleted
 
-    def __extract_mentioning(self) -> List['core.Account']:
+    def __extract_mentioning(self) -> List['the_social_network.Account']:
         """
         This method extracts the mentions of accounts in the calling statement.
         Accounts names are alpha numeric words.
@@ -165,7 +165,7 @@ class Statement(models.Model):
         """
         return re.findall(r"@(\w+)", self.content)
 
-    def add_mentioning(self, account: 'core.Account'):
+    def add_mentioning(self, account: 'the_social_network.Account'):
         """
         This method is for adding an mention of an account to the corresponding statement.
         :param account: The account to be mentioned.
@@ -174,7 +174,7 @@ class Statement(models.Model):
         mentioning, created = AccountTagging.objects.get_or_create(statement=self, account=account)
         return created
 
-    def get_mentioning(self) -> List['core.Account']:
+    def get_mentioning(self) -> List['the_social_network.Account']:
         """
         This method is to get all accounts mentioned by the calling statement.
 
@@ -182,7 +182,7 @@ class Statement(models.Model):
         """
         return list(self.mentioned.all())
 
-    def remove_mentioning(self, account: 'core.Account'):
+    def remove_mentioning(self, account: 'the_social_network.Account'):
         """
         This method is used to delete an specific mentioning of an account for the calling statement.
 
@@ -244,7 +244,7 @@ class AccountTagging(Tagging):
     This model is to represent the mention of an account within an statement.
     """
     # Which account should be mentioned?
-    account = models.ForeignKey('core.Account', related_name='account', on_delete=models.CASCADE)
+    account = models.ForeignKey('the_social_network.Account', related_name='account', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ('-created',)

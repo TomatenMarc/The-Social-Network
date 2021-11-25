@@ -68,7 +68,7 @@ class AccountSerializer(serializers.ModelSerializer):
     user = UserPublicSerializer()
 
     class Meta:
-        model = apps.get_model("core", "Account")
+        model = apps.get_model("the_social_network", "Account")
         fields = ('user', 'image',)
 
 
