@@ -608,12 +608,6 @@ class TestGetStatementFeed(APITestCase):
         response: Response = self.client.get(path="/contents/statements/feed/")
         result = response.data
         self.assertTrue(len(result), 3)
-        print(result[0].get("id"))
-        print(result[1].get("id"))
-        print(result[2].get("id"))
-        print(self.statement_1.id)
-        print(self.statement_2.id)
-        print(self.statement_3.id)
         self.assertEqual(result[0].get("id"), self.statement_3.id)
         self.assertEqual(result[1].get("id"), self.statement_2.id)
         self.assertEqual(result[2].get("id"), self.statement_1.id)
