@@ -1,5 +1,5 @@
 [build-system]
-requires = [ "poetry-core>=1.0.0", "poetry-dynamic-versioning",]
+requires = [ "poetry-core>=1.0.0",]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
@@ -10,9 +10,6 @@ authors = [ "Marc Feger <marc.feger@hhu.de>",]
 license = "BSD-4"
 readme = "README.md"
 homepage = "https://gitlab.cs.uni-duesseldorf.de/feger/the-social-network"
-
-[tool.poetry-dynamic-versioning]
-enable = true
 
 [tool.poetry.dependencies]
 python = "^3.9"
