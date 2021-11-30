@@ -33,8 +33,11 @@ Add *'the_social_network'* to **INSTALLED_APPS** and save the file.
 Next open the urls.py and add the following line to your **urlpatterns**
 
 > url(r'^authentication/', include('the_social_network.urls.authenticationUrls')),
+> 
 > url(r'^accounts/', include('the_social_network.urls.accountUrls')),
+> 
 > url(r'^search/', include('the_social_network.urls.searchUrls')),
+> 
 > url(r'^contents/', include('the_social_network.urls.contentUrls'))
 
 Now everything is ready to run django with **the-social-network**.
@@ -54,12 +57,14 @@ For authorization use the header name "Authorization" and the value "Token <toke
 #### Authentication
 ##### POST url: ".../authentication/register/"
 Register a user
+
 Requestbody:
 {
     "username": "username",
     "password": "password",
     "email": "
 }
+
 Responsebody:
 {
     "token": "token"
@@ -67,11 +72,13 @@ Responsebody:
 
 ##### POST url: ".../authentication/login/"
 Login a user
+
 Requestbody:
 {
     "username": "username",
     "password": "password"
 }
+
 Responsebody:
 {
     "token": "token"
@@ -79,20 +86,28 @@ Responsebody:
 
 ##### POST url: ".../authentication/logout/"
 Logout a user
+
 Requestbody: None
+
 Responsebody: None
+
 Success: HTTP/200
 
 ##### GET url: ".../authentication/validate/"
 Validate a token
+
 Requestbody: None
+
 Responsebody: None
+
 Success: HTTP/200
 
 #### Account
 ##### GET url: ".../accounts/show/<user_id>/"
 Show a public user
+
 Requestbody: None
+
 Responsebody:
 [{
     "user": {
@@ -111,7 +126,9 @@ Responsebody:
 
 ##### GET url: ".../accounts/show/own/"
 Show the own user
+
 Requestbody: None
+
 Responsebody:
 [{
     "user": {
@@ -129,7 +146,9 @@ Responsebody:
 
 ##### GET url: ".../accounts/show/all/"
 Show all public users
+
 Requestbody: None
+
 Responsebody:
 [{
     "user": {
@@ -149,33 +168,44 @@ Responsebody:
 
 ##### PUT url: ".../accounts/update/"
 Updates the own account. Only "Biography" and "Image" are allowed to be updated.
+
 Requestbody:
 {
     "biography": "...",
     "file": "..."
 }
+
 Responsebody: None
+
 Success: HTTP/200
 
 ##### PUT url: ".../accounts/follow/<user_id>/"
 Follow a user
+
 Requestbody: None
+
 Responsebody: None
+
 Success: HTTP/200
 
 ##### PUT url: ".../accounts/unfollow/<user_id>/"
 Unfollow a user
+
 Requestbody: None
+
 Responsebody: None
+
 Success: HTTP/200
 
 ##### PUT url: ".../accounts/operation/add/statement/"
 Add a statement to the own account
+
 Requestbody:
 {
     "input": "<statement>"
     "reactions": { "to": <reaction_to_a_statement_id>, "relation": <"attack" or "support">}   <--- optional
 }
+
 Responsebody:
  {
     "id": ...,
@@ -192,12 +222,15 @@ Responsebody:
     "created": "...",
     "relation_to_parent": ...
 }
+
 Success: HTTP/200
 
 #### Contents
 ##### GET url: ".../contents/statements/get/<statement_id>/"
 Get a statement
+
 Requestbody: None
+
 Responsebody:
 [
     {
@@ -220,8 +253,11 @@ Responsebody:
 
 ##### GET url: ".../contents/statements/with/hashtag/"
 Get all statements with a hashtag
-Requestbody:None
+
+Requestbody: None
+
 Queryparameters: "?q=<hashtag>"
+
 Responsebody:
 [
     {
@@ -245,7 +281,9 @@ Responsebody:
 
 ##### GET url: ".../contents/statements/feed/"
 Get all statements of the accounts that are followed by the user
+
 Requestbody: None
+
 Responsebody:
 [
     {
@@ -269,15 +307,20 @@ Responsebody:
 
 ##### GET url: ".../contents/trending/hashtag/"
 Get all trending hashtags which are most used in statements
+
 Requestbody: None
+
 Reponsebody: ++++++ TODO:  Setting of a hashtag not clear ++++++
 
 
 #### Search
 ##### GET url: ".../search/"
 Searchs for a user or hashtag
+
 Requestbody: None
+
 Queryparameters: "?q=<search_query>&filter=<"user" or "hashtag">"
+
 Responsebody:
 {
     "accounts": [
