@@ -10,7 +10,7 @@ Minimum requierments are:
 > [Pillow](https://pypi.org/project/Pillow/) >= 8.4.0  
 > [djangorestframework](https://pypi.org/project/djangorestframework/) >= 3.12.4
 
-Intallation can be done by pip like
+Intallation can be done by **pip** like
 
 > pip install the-social-network
 
@@ -27,7 +27,7 @@ This will create a **mysite** directory in your current directory.
 Open the **mysite** directory and open the **settings.py**.
 Add *'the_social_network'* to **INSTALLED_APPS** and save the file.
 
-Next open the urls.py and add the following line to your **urlpatterns**
+Next open the urls.py and add the following lines to your **urlpatterns**
 
 > url(r'^authentication/', include('the_social_network.urls.authenticationUrls')),  
 > url(r'^accounts/', include('the_social_network.urls.accountUrls')),  
