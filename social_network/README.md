@@ -47,7 +47,7 @@ Create the database with
 and start the server with
 > python manage.py runserver
 
-the following page should showup if you open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your browser.
+the default django information page should showup if you open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your browser.
 
 ## Request API for the URLs
 
@@ -56,340 +56,316 @@ For authorization use the header name "Authorization" and the value "Token <toke
 
 #### Authentication
 ##### POST url: ".../authentication/register/"
-Register a user
+Register a user  
 
-Requestbody:
-{
-    "username": "username",
-    "password": "password",
-    "email": "
-}
-
-Responsebody:
-{
-    "token": "token"
-}
+Requestbody:  
+{  
+    "username": "username",  
+    "password": "password",  
+    "email": "email"  
+}  
+Responsebody:  
+{  
+    "token": "token"  
+}  
 
 ##### POST url: ".../authentication/login/"
-Login a user
+Login a user  
 
-Requestbody:
-{
-    "username": "username",
-    "password": "password"
-}
-
-Responsebody:
-{
-    "token": "token"
-}
+Requestbody:  
+{  
+    "username": "username",  
+    "password": "password"  
+}  
+Responsebody:  
+{  
+    "token": "token"  
+}  
 
 ##### POST url: ".../authentication/logout/"
-Logout a user
+Logout a user  
 
-Requestbody: None
-
-Responsebody: None
-
-Success: HTTP/200
+Requestbody: None  
+Responsebody: None  
+Success: HTTP/200  
 
 ##### GET url: ".../authentication/validate/"
-Validate a token
+Validate a token  
 
-Requestbody: None
-
-Responsebody: None
-
-Success: HTTP/200
+Requestbody: None  
+Responsebody: None  
+Success: HTTP/200  
 
 #### Account
 ##### GET url: ".../accounts/show/<user_id>/"
-Show a public user
+Show a public user  
 
-Requestbody: None
-
-Responsebody:
-[{
-    "user": {
-        "id": ...,
-        "username": ...,
-        "email": ...,
-        "date_joined": "..."
-    },
-    "image": "...",
-    "biography": "...",
-    "related_by": [],
-    "related_to": [],
-    "statements": []
-}]
+Requestbody: None  
+Responsebody:  
+[{  
+    "user": {  
+        "id": ...,  
+        "username": ...,  
+        "email": ...,  
+        "date_joined": "..."  
+    },  
+    "image": "...",  
+    "biography": "...",  
+    "related_by": [],  
+    "related_to": [],  
+    "statements": []  
+}]  
 
 
 ##### GET url: ".../accounts/show/own/"
-Show the own user
+Show the own user  
 
-Requestbody: None
-
-Responsebody:
-[{
-    "user": {
-        "id": ...,
-        "username": ...,
-        "email": ...,
-        "date_joined": "..."
-    },
-    "image": "...",
-    "biography": "...",
-    "related_by": [],
-    "related_to": [],
-    "statements": []
-}]
+Requestbody: None  
+Responsebody:  
+[{  
+    "user": {  
+        "id": ...,  
+        "username": ...,  
+        "email": ...,  
+        "date_joined": "..."  
+    },  
+    "image": "...",  
+    "biography": "...",  
+    "related_by": [],  
+    "related_to": [],  
+    "statements": []  
+}]  
 
 ##### GET url: ".../accounts/show/all/"
-Show all public users
+Show all public users  
 
-Requestbody: None
-
-Responsebody:
-[{
-    "user": {
-        "id": ...,
-        "username": ...,
-        "email": ...,
-        "date_joined": "..."
-    },
-    "image": "...",
-    "biography": "...",
-    "related_by": [],
-    "related_to": [],
-    "statements": []
-},
-...
-]
+Requestbody: None  
+Responsebody:  
+[{  
+    "user": {  
+        "id": ...,  
+        "username": ...,  
+        "email": ...,  
+        "date_joined": "..."  
+    },  
+    "image": "...",  
+    "biography": "...",  
+    "related_by": [],  
+    "related_to": [],  
+    "statements": []  
+},  
+...  
+]  
 
 ##### PUT url: ".../accounts/update/"
-Updates the own account. Only "Biography" and "Image" are allowed to be updated.
+Updates the own account. Only "Biography" and "Image" are allowed to be updated.  
 
-Requestbody:
-{
-    "biography": "...",
-    "file": "..."
-}
-
-Responsebody: None
-
-Success: HTTP/200
+Requestbody:  
+{  
+    "biography": "...",  
+    "file": "..."  
+}  
+Responsebody: None  
+Success: HTTP/200  
 
 ##### PUT url: ".../accounts/follow/<user_id>/"
-Follow a user
+Follow a user  
 
-Requestbody: None
-
-Responsebody: None
-
-Success: HTTP/200
+Requestbody: None  
+Responsebody: None  
+Success: HTTP/200  
 
 ##### PUT url: ".../accounts/unfollow/<user_id>/"
-Unfollow a user
+Unfollow a user  
 
-Requestbody: None
-
-Responsebody: None
-
-Success: HTTP/200
+Requestbody: None  
+Responsebody: None  
+Success: HTTP/200  
 
 ##### PUT url: ".../accounts/operation/add/statement/"
-Add a statement to the own account
+Add a statement to the own account  
 
-Requestbody:
-{
-    "input": "<statement>"
-    "reactions": { "to": <reaction_to_a_statement_id>, "relation": <"attack" or "support">}   <--- optional
-}
-
-Responsebody:
- {
-    "id": ...,
-    "author": {
-        "user": {
-            "id": ...,
-            "username": "..."
-        },
-        "image": "..."
-    },
-    "content": "...",
-    "tagged": [],
-    "mentioned": [],
-    "created": "...",
-    "relation_to_parent": ...
-}
-
-Success: HTTP/200
+Requestbody:  
+{  
+    "input": "<statement>"  
+    "reactions": { "to": <reaction_to_a_statement_id>, "relation": <"attack" or "support">}   <--- optional  
+}  
+Responsebody:  
+ {  
+    "id": ...,  
+    "author": {  
+        "user": {  
+            "id": ...,  
+            "username": "..."  
+        },  
+        "image": "..."  
+    },  
+    "content": "...",  
+    "tagged": [],  
+    "mentioned": [],  
+    "created": "...",  
+    "relation_to_parent": ...  
+}  
+Success: HTTP/200  
 
 #### Contents
 ##### GET url: ".../contents/statements/get/<statement_id>/"
-Get a statement
+Get a statement  
 
-Requestbody: None
-
-Responsebody:
-[
-    {
-        "id": ...,
-        "author": {
-            "user": {
-                "id": ...,
-                "username": "..."
-            },
-            "image": "..."
-        },
-        "content": "...",
-        "tagged": [],
-        "mentioned": [],
-        "created": "...",
-        "relation_to_parent": ...,
-        "reactions": []
-    }
-]
+Requestbody: None  
+Responsebody:  
+[  
+    {  
+        "id": ...,  
+        "author": {  
+            "user": {  
+                "id": ...,  
+                "username": "..."  
+            },  
+            "image": "..."  
+        },  
+        "content": "...",  
+        "tagged": [],  
+        "mentioned": [],  
+        "created": "...",  
+        "relation_to_parent": ...,  
+        "reactions": []  
+    }  
+]  
 
 ##### GET url: ".../contents/statements/with/hashtag/"
-Get all statements with a hashtag
+Get all statements with a hashtag  
 
-Requestbody: None
-
-Queryparameters: "?q=<hashtag>"
-
-Responsebody:
-[
-    {
-        "id": ...,
-        "author": {
-            "user": {
-                "id": ...,
-                "username": "..."
-            },
-            "image": "..."
-        },
-        "content": "...",
-        "tagged": [],
-        "mentioned": [],
-        "created": "...",
-        "relation_to_parent": ...,
-        "reactions": []
-    },
-    ...
-]
+Requestbody: None  
+Queryparameters: "?q=<hashtag>"  
+Responsebody:  
+[  
+    {  
+        "id": ...,  
+        "author": {  
+            "user": {  
+                "id": ...,  
+                "username": "..."  
+            },  
+            "image": "..."  
+        },  
+        "content": "...",  
+        "tagged": [],  
+        "mentioned": [],  
+        "created": "...",  
+        "relation_to_parent": ...,  
+        "reactions": []  
+    },  
+    ...  
+]  
 
 ##### GET url: ".../contents/statements/feed/"
-Get all statements of the accounts that are followed by the user
+Get all statements of the accounts that are followed by the user  
 
-Requestbody: None
-
-Responsebody:
-[
-    {
-        "id": ...,
-        "author": {
-            "user": {
-                "id": ...,
-                "username": "..."
-            },
-            "image": "..."
-        },
-        "content": "...",
-        "tagged": [],
-        "mentioned": [],
-        "created": "...",
-        "relation_to_parent": ...,
-        "reactions": []
-    },
-    ...
-]
+Requestbody: None  
+Responsebody:  
+[  
+    {  
+        "id": ...,  
+        "author": {  
+            "user": {  
+                "id": ...,  
+                "username": "..."  
+            },  
+            "image": "..."  
+        },  
+        "content": "...",  
+        "tagged": [],  
+        "mentioned": [],  
+        "created": "...",  
+        "relation_to_parent": ...,  
+        "reactions": []  
+    },  
+    ...  
+]  
 
 ##### GET url: ".../contents/trending/hashtag/"
-Get all trending hashtags which are most used in statements
+Get all trending hashtags which are most used in statements  
 
-Requestbody: None
-
-Reponsebody: ++++++ TODO:  Setting of a hashtag not clear ++++++
+Requestbody: None  
+Reponsebody: ++++++ TODO:  Setting of a hashtag not clear ++++++  
 
 
 #### Search
 ##### GET url: ".../search/"
-Searchs for a user or hashtag
+Searchs for a user or hashtag  
 
-Requestbody: None
-
-Queryparameters: "?q=<search_query>&filter=<"user" or "hashtag">"
-
-Responsebody:
-{
-    "accounts": [
-                    {
-                    "user": {
-                        "id": ...,
-                        "username": "...",
-                        },
-                    "image": "..."
-                    },
-                    ...
-    ],
-    "hashtags": [
-                    {
-                    "id": ...,
-                    "tag": "..."
-                    },
-                    ...
-    ]
-}
+Requestbody: None  
+Queryparameters: "?q=<search_query>&filter=<"user" or "hashtag">"  
+Responsebody:  
+{  
+    "accounts": [  
+                    {  
+                    "user": {  
+                        "id": ...,  
+                        "username": "...",  
+                        },  
+                    "image": "..."  
+                    },  
+                    ...  
+    ],  
+    "hashtags": [  
+                    {  
+                    "id": ...,  
+                    "tag": "..."  
+                    },  
+                    ...  
+    ]  
+}  
 
 ## Core Database structure
 
-The project requieres the base authentication database structure from django and extends it with the following tables:
+The project requieres the base authentication database structure from django and extends it with the following tables:  
 
 1. "the_social_network_account"
-    with:
-    user_id: int as primary key and foreign key to django auth_user
-    image: varchar(100)
-    biography: varchar(1000)
+    with  
+    user_id: int as primary key and foreign key to django auth_user  
+    image: varchar(100)  
+    biography: varchar(1000)  
 
 2. "the_social_network_statement"
-    with:
-    id: int as primary key
-    author_id: int as foreign key to the_social_network_account
-    content: varchar(120)
-    created: datetime
+    with  
+    id: int as primary key  
+    author_id: int as foreign key to the_social_network_account  
+    content: varchar(120)  
+    created: datetime  
 
 3. "the_social_network_accounttagging"
-    with:
-    id: int as primary key
-    created: datetime
-    account_id: int as foreign key to the_social_network_account
-    statement_id: int as foreign key to the_social_network_statement
+    with  
+    id: int as primary key  
+    created: datetime  
+    account_id: int as foreign key to the_social_network_account  
+    statement_id: int as foreign key to the_social_network_statement  
 
 4. "the_social_network_hashtag"
-    with:
-    id: int as primary key
-    tag: varchar(30)
-    created: datetime
+    with  
+    id: int as primary key  
+    tag: varchar(30)  
+    created: datetime  
 
 5. "the_social_network_hashtagtagging"
-    with:
-    id: int as primary key
-    created: datetime
-    hashtag_id: int as foreign key to the_social_network_hashtag
-    statement_id: int as foreign key to the_social_network_statement
+    with  
+    id: int as primary key  
+    created: datetime  
+    hashtag_id: int as foreign key to the_social_network_hashtag  
+    statement_id: int as foreign key to the_social_network_statement  
 
 6. "the_social_network_reaction"
-    with:
-    id: int as primary key
-    created: datetime
-    vote: small uint
-    child_id: int as foreign key to the_social_network_statement
-    parent_id: int as foreign key to the_social_network_statement
+    with  
+    id: int as primary key  
+    created: datetime  
+    vote: small uint  
+    child_id: int as foreign key to the_social_network_statement  
+    parent_id: int as foreign key to the_social_network_statement  
 
 7. "the_social_network_relationship"
-    with:
-    id: int as primary key
-    created: datetime
-    from_account_id: int as foreign key to the_social_network_account
-    to_account_id: int as foreign key to the_social_network_account
+    with  
+    id: int as primary key  
+    created: datetime  
+    from_account_id: int as foreign key to the_social_network_account  
+    to_account_id: int as foreign key to the_social_network_account  
