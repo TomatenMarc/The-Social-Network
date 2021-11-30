@@ -5,12 +5,9 @@ The package "The Social Network" is a django base backend core element for any p
 ## Installation
 Minimum requierments are:
 
-> [Python](https://www.python.org/downloads/) >= 3.9
->
-> [Django](https://pypi.org/project/Django/) >= 3.2.9
->
-> [Pillow](https://pypi.org/project/Pillow/) >= 8.4.0
->
+> [Python](https://www.python.org/downloads/) >= 3.9  
+> [Django](https://pypi.org/project/Django/) >= 3.2.9  
+> [Pillow](https://pypi.org/project/Pillow/) >= 8.4.0  
 > [djangorestframework](https://pypi.org/project/djangorestframework/) >= 3.12.4
 
 Intallation can be done by pip like
@@ -32,12 +29,9 @@ Add *'the_social_network'* to **INSTALLED_APPS** and save the file.
 
 Next open the urls.py and add the following line to your **urlpatterns**
 
-> url(r'^authentication/', include('the_social_network.urls.authenticationUrls')),
-> 
-> url(r'^accounts/', include('the_social_network.urls.accountUrls')),
-> 
-> url(r'^search/', include('the_social_network.urls.searchUrls')),
-> 
+> url(r'^authentication/', include('the_social_network.urls.authenticationUrls')),  
+> url(r'^accounts/', include('the_social_network.urls.accountUrls')),  
+> url(r'^search/', include('the_social_network.urls.searchUrls')),  
 > url(r'^contents/', include('the_social_network.urls.contentUrls'))
 
 Now everything is ready to run django with **the-social-network**.
