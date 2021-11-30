@@ -59,28 +59,36 @@ For authorization use the header name "Authorization" and the value "Token <toke
 Register a user  
 
 Requestbody:  
+```json
 {  
     "username": "username",  
     "password": "password",  
     "email": "email"  
-}  
+} 
+``` 
 Responsebody:  
+```json
 {  
     "token": "token"  
 }  
+```
 
 ##### POST url: ".../authentication/login/"
 Login a user  
 
 Requestbody:  
+```json
 {  
     "username": "username",  
     "password": "password"  
 }  
+```
 Responsebody:  
+```json
 {  
     "token": "token"  
 }  
+```
 
 ##### POST url: ".../authentication/logout/"
 Logout a user  
@@ -102,6 +110,7 @@ Show a public user
 
 Requestbody: None  
 Responsebody:  
+```json
 [{  
     "user": {  
         "id": ...,  
@@ -115,6 +124,7 @@ Responsebody:
     "related_to": [],  
     "statements": []  
 }]  
+```
 
 
 ##### GET url: ".../accounts/show/own/"
@@ -122,6 +132,7 @@ Show the own user
 
 Requestbody: None  
 Responsebody:  
+```json
 [{  
     "user": {  
         "id": ...,  
@@ -135,12 +146,14 @@ Responsebody:
     "related_to": [],  
     "statements": []  
 }]  
+```
 
 ##### GET url: ".../accounts/show/all/"
 Show all public users  
 
 Requestbody: None  
 Responsebody:  
+```json
 [{  
     "user": {  
         "id": ...,  
@@ -156,15 +169,18 @@ Responsebody:
 },  
 ...  
 ]  
+```
 
 ##### PUT url: ".../accounts/update/"
 Updates the own account. Only "Biography" and "Image" are allowed to be updated.  
 
 Requestbody:  
+```json
 {  
     "biography": "...",  
     "file": "..."  
 }  
+```
 Responsebody: None  
 Success: HTTP/200  
 
@@ -186,12 +202,15 @@ Success: HTTP/200
 Add a statement to the own account  
 
 Requestbody:  
+```json
 {  
     "input": "<statement>"  
     "reactions": { "to": <reaction_to_a_statement_id>, "relation": <"attack" or "support">}   <--- optional  
 }  
+```
 Responsebody:  
- {  
+```json
+{  
     "id": ...,  
     "author": {  
         "user": {  
@@ -206,6 +225,7 @@ Responsebody:
     "created": "...",  
     "relation_to_parent": ...  
 }  
+```
 Success: HTTP/200  
 
 #### Contents
@@ -214,6 +234,7 @@ Get a statement
 
 Requestbody: None  
 Responsebody:  
+```json
 [  
     {  
         "id": ...,  
@@ -232,6 +253,7 @@ Responsebody:
         "reactions": []  
     }  
 ]  
+```
 
 ##### GET url: ".../contents/statements/with/hashtag/"
 Get all statements with a hashtag  
@@ -239,6 +261,7 @@ Get all statements with a hashtag
 Requestbody: None  
 Queryparameters: "?q=<hashtag>"  
 Responsebody:  
+```json
 [  
     {  
         "id": ...,  
@@ -258,12 +281,14 @@ Responsebody:
     },  
     ...  
 ]  
+```
 
 ##### GET url: ".../contents/statements/feed/"
 Get all statements of the accounts that are followed by the user  
 
 Requestbody: None  
 Responsebody:  
+```json
 [  
     {  
         "id": ...,  
@@ -283,6 +308,7 @@ Responsebody:
     },  
     ...  
 ]  
+```
 
 ##### GET url: ".../contents/trending/hashtag/"
 Get all trending hashtags which are most used in statements  
@@ -298,6 +324,7 @@ Searchs for a user or hashtag
 Requestbody: None  
 Queryparameters: "?q=<search_query>&filter=<"user" or "hashtag">"  
 Responsebody:  
+```json
 {  
     "accounts": [  
                     {  
@@ -317,6 +344,7 @@ Responsebody:
                     ...  
     ]  
 }  
+```
 
 ## Core Database structure
 
