@@ -6,8 +6,11 @@ The package "The Social Network" is a django base backend core element for any p
 Minimum requierments are:
 
 > [Python](https://www.python.org/downloads/) >= 3.9
+>
 > [Django](https://pypi.org/project/Django/) >= 3.2.9
+>
 > [Pillow](https://pypi.org/project/Pillow/) >= 8.4.0
+>
 > [djangorestframework](https://pypi.org/project/djangorestframework/) >= 3.12.4
 
 Intallation can be done by pip like
