@@ -350,40 +350,40 @@ Responsebody:
 
 The project requieres the base authentication database structure from django and extends it with the following tables:  
 
-1. "the_social_network_account"
+#### the_social_network_account
     with  
     user_id: int as primary key and foreign key to django auth_user  
     image: varchar(100)  
     biography: varchar(1000)  
 
-2. "the_social_network_statement"
+#### the_social_network_statement
     with  
     id: int as primary key  
     author_id: int as foreign key to the_social_network_account  
     content: varchar(120)  
     created: datetime  
 
-3. "the_social_network_accounttagging"
+#### the_social_network_accounttagging
     with  
     id: int as primary key  
     created: datetime  
     account_id: int as foreign key to the_social_network_account  
     statement_id: int as foreign key to the_social_network_statement  
 
-4. "the_social_network_hashtag"
+#### the_social_network_hashtag
     with  
     id: int as primary key  
     tag: varchar(30)  
     created: datetime  
 
-5. "the_social_network_hashtagtagging"
+#### the_social_network_hashtagtagging
     with  
     id: int as primary key  
     created: datetime  
     hashtag_id: int as foreign key to the_social_network_hashtag  
     statement_id: int as foreign key to the_social_network_statement  
 
-6. "the_social_network_reaction"
+#### the_social_network_reaction
     with  
     id: int as primary key  
     created: datetime  
@@ -391,7 +391,7 @@ The project requieres the base authentication database structure from django and
     child_id: int as foreign key to the_social_network_statement  
     parent_id: int as foreign key to the_social_network_statement  
 
-7. "the_social_network_relationship"
+#### the_social_network_relationship
     with  
     id: int as primary key  
     created: datetime  
