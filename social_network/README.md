@@ -304,6 +304,37 @@ Responsebody:
 ]  
 ```
 
+##### GET url: ".../contents/statements/feed/pagination"
+Get statements of the accounts that are followed by the user  
+
+Requestbody: None  
+Queryparameters: "?page=<page_number>&size=<number_of_statements_per_page>"
+Responsebody:  
+```json
+{
+    "total": ...,  
+    "data": [  
+        {  
+            "id": ...,  
+            "author": {  
+                "user": {  
+                    "id": ...,  
+                    "username": "..."  
+                },  
+                "image": "..."  
+            },  
+            "content": "...",  
+            "tagged": [],  
+            "mentioned": [],  
+            "created": "...",  
+            "relation_to_parent": ...,  
+            "reactions": []  
+        },  
+        ...  
+    ]  
+}  
+```
+
 ##### GET url: ".../contents/trending/hashtag/"
 Get all trending hashtags which are most used in statements  
 
