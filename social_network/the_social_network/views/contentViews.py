@@ -127,7 +127,7 @@ class ShowStatementFeedPagination(APIView):
         else:
             if last >= total:
                 last = None
-                feed = feed[first:last]
+            feed = feed[first:last]
         
         serializer: StatementSerializer = StatementSerializer(instance=feed, many=True)
         return Response(status=status.HTTP_200_OK, data={"data": serializer.data, "total": total})
