@@ -615,6 +615,45 @@ class TestGetStatementFeed(APITestCase):
         self.assertTrue(result[0].get("created") > result[1].get("created"))
         self.assertTrue(result[1].get("id") > result[2].get("id"))
         self.assertTrue(result[1].get("created") > result[2].get("created"))
+        
+    def test_feed_contains_correct_data_pagination(self):
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + str(self.token_beate))
+        response: Response = self.client.get(path="/contents/statements/feed/pagination/?page=1&size=3")
+        result = response.data["data"]
+        result_total = response.data["total"]
+        self.assertTrue(len(result), 3)
+        self.assertTrue(result_total, 3)
+        self.assertEqual(result[0].get("id"), self.statement_3.id)
+        self.assertEqual(result[1].get("id"), self.statement_2.id)
+        self.assertEqual(result[2].get("id"), self.statement_1.id)
+        self.assertTrue(result[0].get("id") > result[1].get("id"))
+        self.assertTrue(result[0].get("created") > result[1].get("created"))
+        self.assertTrue(result[1].get("id") > result[2].get("id"))
+        self.assertTrue(result[1].get("created") > result[2].get("created"))
+    
+    def test_feed_load_over_size_pagination(self):
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + str(self.token_beate))
+        response: Response = self.client.get(path="/contents/statements/feed/pagination/?page=1&size=4")
+        result = response.data["data"]
+        result_total = response.data["total"]
+        self.assertTrue(len(result), 3)
+        self.assertTrue(result_total, 3)
+        
+    def test_feed_load_under_size_pagination(self):
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + str(self.token_beate))
+        response: Response = self.client.get(path="/contents/statements/feed/pagination/?page=1&size=2")
+        result = response.data["data"]
+        result_total = response.data["total"]
+        self.assertTrue(len(result), 2)
+        self.assertTrue(result_total, 3)
+        
+    def test_feed_contains_no_data_pagination(self):
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + str(self.token_beate))
+        response: Response = self.client.get(path="/contents/statements/feed/pagination/?page=2&size=2")
+        result = response.data["data"]
+        result_total = response.data["total"]
+        self.assertTrue(len(result), 0)
+        self.assertTrue(result_total, 3)
 
 
 class TestTrendingHashtag(APITestCase):

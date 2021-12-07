@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "the-social-network"
-version = "0.0.3"
+version = "0.0.4"
 description = "Basic social network core."
 authors = ["Marc Feger <marc.feger@hhu.de>"]
 license = "BSD-4"
