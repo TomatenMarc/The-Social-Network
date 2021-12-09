@@ -1,12 +1,11 @@
 [tool.poetry]
 name = "the-social-network"
-version = "0.0.6"
+version = "0.0.7"
 description = "Basic social network core."
 authors = ["Marc Feger <marc.feger@hhu.de>"]
 license = "BSD-4"
 readme = "README.md"
 homepage = "https://gitlab.cs.uni-duesseldorf.de/feger/the-social-network"
-include = ["media/account/default/Argunaut.png", "media/account/default/Planet.png"]
 
 [tool.poetry.dependencies]
 python = "^3.9"

@@ -378,7 +378,7 @@ The project requieres the base authentication database structure from django and
 #### the_social_network_account
     with  
     user_id: int as primary key and foreign key to django auth_user  
-    image: varchar(100)  
+    image: varchar(100) -> default image is 'account/default/Argunaut.png', it's not inside the package and default path to store image is "account/images"
     biography: varchar(1000)  
 
 #### the_social_network_statement
