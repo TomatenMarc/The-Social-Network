@@ -25,7 +25,19 @@ If you not have already created a django python project, [create](https://docs.d
 This will create a **mysite** directory in your current directory.
 
 Open the **mysite** directory and open the **settings.py**.
-Add *'the_social_network'* to **INSTALLED_APPS** and save the file.
+We need to make some changes in this file:
+- Add ```import os``` at the very first begining of the file.
+- Add ```ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "*").split(",")``` where ```ALLOWED_HOSTS = []```
+- Add ```CORS_ORIGIN_ALLOW_ALL = bool(os.environ.get("CORS_ORIGIN_ALLOW_ALL", True))```directly after ```ALLOWED_HOSTS```
+- Add ```'corsheaders', 'the_social_network', 'rest_framework', 'rest_framework.authtoken'``` to **INSTALLED_APPS**
+- Add ```'corsheaders.middleware.CorsMiddleware'``` at the start of **MIDDLEWARE**
+- Add ```# REST Framework settings
+    REST_FRAMEWORK = {
+        'DEFAULT_AUTHENTICATION_CLASSES': [
+            'rest_framework.authentication.TokenAuthentication',
+        ],
+    }``` 
+after ```STATIC_URL = '/static/'```
 
 Next open the urls.py and add the following lines to your **urlpatterns**
 
