@@ -2,10 +2,9 @@
 name = "the-social-network"
 version = "0.0.7"
 description = "Basic social network core."
-authors = ["Marc Feger <marc.feger@hhu.de>"]
+authors = ["Marc Feger <marc.feger@icloud.com>"]
 license = "BSD-4"
 readme = "README.md"
-homepage = "https://gitlab.cs.uni-duesseldorf.de/feger/the-social-network"
 
 [tool.poetry.dependencies]
 python = "^3.9"
